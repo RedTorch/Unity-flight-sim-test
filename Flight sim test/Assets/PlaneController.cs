@@ -16,12 +16,15 @@ public class PlaneController : MonoBehaviour
     public float MpxEaseSpeed = 2f;
     [Tooltip("0 < x. Responsiveness of pitch controls, in radius distance per second.")]
     public float MpyEaseSpeed = 1f;
+    [Tooltip("0 < x. Responsiveness of thrust controls, in <delta normal --> max/min thrust> per second.")]
+    public float ThrustEaseSpeed = 1f;
     [Tooltip("0 < x <= 1. Percent diameter of mouse control circle relative to height of screen.")]
     public float ControlCircleSize = 0.6f;
 
     private float mpx = 0f;
     private float mpy = 0f;
     private float wasd = 0f;
+    private float thrustMult = 1f;
 
     void Start()
     {
@@ -30,9 +33,10 @@ public class PlaneController : MonoBehaviour
 
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * SpeedInMetersPerSecond;
+        UpdateThrustMult();
         UpdateMP();
-        UpdateYaw();
+        wasd = Input.GetAxis("Horizontal");
+        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * SpeedInMetersPerSecond * thrustMult;
         gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,wasd*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
     }
 
@@ -51,7 +55,22 @@ public class PlaneController : MonoBehaviour
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * ControlCircleSize);
     }
 
-    void UpdateYaw() {
-        wasd = Input.GetAxis("Horizontal");
+    void UpdateThrustMult() {
+        float vin = Input.GetAxis("Vertical");
+        if(vin == 0) {
+            if(thrustMult>1) {
+                thrustMult -= ThrustEaseSpeed * Time.deltaTime;
+            }
+            else if(thrustMult<1) {
+                thrustMult += ThrustEaseSpeed * 0.5f * Time.deltaTime;
+            }
+        }
+        else if(vin > 0) {
+            thrustMult += ThrustEaseSpeed * Time.deltaTime;
+        }
+        else if(vin < 0) {
+            thrustMult -= ThrustEaseSpeed * 0.5f * Time.deltaTime;
+        }
+        thrustMult = Mathf.Clamp(thrustMult,0.5f,2f);
     }
 }

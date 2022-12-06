@@ -6,7 +6,6 @@ public class GunController : MonoBehaviour
 {
     public GameObject Bullet;
     public float RPM = 120f;
-    public bool isFiring = true;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
 
