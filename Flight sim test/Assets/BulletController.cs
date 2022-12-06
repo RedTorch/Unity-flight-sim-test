@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public float speedInMetersPerSecond;
-    public float maxDistance = 120f;
+    public float Damage = 1f;
+    public float SpeedInMetersPerSecond;
+    public float MaxDistance = 120f;
     private float totalDistTraveled = 0f;
     // Start is called before the first frame update
     void Start()
@@ -16,12 +17,16 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float forwardDistance = speedInMetersPerSecond * Time.deltaTime;
+        float forwardDistance = SpeedInMetersPerSecond * Time.deltaTime;
         RaycastHit hit;
         if(Physics.Raycast(transform.position,transform.forward, out hit, forwardDistance)) {
+            GameObject target = hit.collider.gameObject;
+            if(target.GetComponent<DamageReceiver>() != null) {
+                target.GetComponent<DamageReceiver>().TakeDamage(Damage);
+            }
             Destroy(gameObject);
         }
-        else if(totalDistTraveled >= maxDistance) {
+        else if(totalDistTraveled >= MaxDistance) {
             Destroy(gameObject);
         }
         else {

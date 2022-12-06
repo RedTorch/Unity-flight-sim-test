@@ -8,9 +8,10 @@ public class PlaneController : MonoBehaviour
 
     public GameObject CircleUI;
 
-    public float Speed = 1f;
+    public float SpeedInMetersPerSecond = 1f;
     public float RollSpeed = 2f;
     public float PitchSpeed = 2f;
+    public float YawSpeed = 0.5f;
     [Tooltip("0 < x. Responsiveness of roll controls, in radius distance per second.")]
     public float MpxEaseSpeed = 2f;
     [Tooltip("0 < x. Responsiveness of pitch controls, in radius distance per second.")]
@@ -20,18 +21,19 @@ public class PlaneController : MonoBehaviour
 
     private float mpx = 0f;
     private float mpy = 0f;
-    // Start is called before the first frame update
+    private float wasd = 0f;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * Speed;
+        gameObject.GetComponent<Rigidbody>().velocity = transform.forward * SpeedInMetersPerSecond;
         UpdateMP();
-        gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,0f,-1f*mpx*RollSpeed*Time.deltaTime);
+        UpdateYaw();
+        gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,wasd*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
     }
 
     void UpdateMP() {
@@ -49,27 +51,7 @@ public class PlaneController : MonoBehaviour
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * ControlCircleSize);
     }
 
-/* Gun class below:
-
-    public GameObject Bullet;
-    public float RPM;
-    public bool isFiring = true;
-    private float FireInterval;
-    private float fireCooldown;
-
-    void Start() 
-    {
-        FireInterval = 60 / RPM;
-    }   
-
-    void Update() 
-    {
-        if(isFiring && fireCooldown <= 0) {
-            Instantiate(Bullet);
-            fireCooldown += FireInterval;
-        }
-        fireCooldown -= Time.deltaTime;
+    void UpdateYaw() {
+        wasd = Input.GetAxis("Horizontal");
     }
-
-*/
 }
