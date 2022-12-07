@@ -72,5 +72,6 @@ public class PlaneController : MonoBehaviour
             thrustMult -= ThrustEaseSpeed * 0.5f * Time.deltaTime;
         }
         thrustMult = Mathf.Clamp(thrustMult,0.5f,2f);
+        Camera.main.fieldOfView = 60f + (thrustMult - 1f)*20f;
     }
 }

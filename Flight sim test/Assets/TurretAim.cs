@@ -8,7 +8,7 @@ public class TurretAim : MonoBehaviour
     public GameObject Target;
     public float RPM = 120f;
     public float DetectRangeInMeters = 200f;
-    private bool isFiring = false;
+    private bool isFiring = true;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class TurretAim : MonoBehaviour
             fireCooldown -= Time.deltaTime;
         }
         else if(isFiring && Vector3.Distance(transform.position,Target.transform.position) <= DetectRangeInMeters) {
-            Instantiate(Bullet,transform.position + new Vector3(0f,1f,0f),transform.rotation);
+            Instantiate(Bullet,transform.position + new Vector3(0f,1f,0f),Quaternion.LookRotation(Target.transform.position-transform.position));
             fireCooldown += FireIntervalInSeconds;
         }
     }
