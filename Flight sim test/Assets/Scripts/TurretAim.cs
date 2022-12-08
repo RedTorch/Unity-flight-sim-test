@@ -27,7 +27,7 @@ public class TurretAim : MonoBehaviour
             fireCooldown -= Time.deltaTime;
         }
         else if(isFiring && Vector3.Distance(transform.position,Target.transform.position) <= DetectRangeInMeters) {
-            GameObject b = Instantiate(Bullet,transform.position + new Vector3(0f,1f,0f),Quaternion.LookRotation(Target.transform.position-transform.position));
+            GameObject b = Instantiate(Bullet,transform.position + new Vector3(0f,4f,0f),Quaternion.LookRotation(Target.transform.position-transform.position));
             Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
             b.transform.Rotate(spreadVec);
             fireCooldown += FireIntervalInSeconds;
