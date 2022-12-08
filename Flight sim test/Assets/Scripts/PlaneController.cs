@@ -21,23 +21,26 @@ public class PlaneController : MonoBehaviour
     [Tooltip("0 < x <= 1. Percent diameter of mouse control circle relative to height of screen.")]
     public float ControlCircleSize = 0.6f;
 
+    [SerializeField] private AnimationCurve mpAnimCurve;
+    [SerializeField] private AnimationCurve thrustAnimCurve;
+    [SerializeField] private AnimationCurve ThrustEaseAnimCurve;
+
     private float mpx = 0f;
     private float mpy = 0f;
-    private float wasd = 0f;
+    private float thrustEaser = 0f;
     private float thrustMult = 1f;
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         UpdateThrustMult();
         UpdateMP();
-        wasd = Input.GetAxis("Horizontal");
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * SpeedInMetersPerSecond * thrustMult;
-        gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,wasd*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
+        gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,Input.GetAxis("Horizontal")*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
     }
 
     void UpdateMP() {
@@ -47,31 +50,23 @@ public class PlaneController : MonoBehaviour
         float controlCircleRadius = (Screen.height/2) * ControlCircleSize;
         float centerX = Screen.width / 2;
         float centerY = Screen.height / 2;
-        mpx = Mathf.Lerp(mpx,Mathf.Clamp((mousePos.x-centerX)/controlCircleRadius,-1f,1f),MpxEaseSpeed*Time.deltaTime);
-        mpy = Mathf.Lerp(mpy,Mathf.Clamp((mousePos.y-centerY)/controlCircleRadius,-1f,1f),MpyEaseSpeed*Time.deltaTime);
+        float deltaEase = MpxEaseSpeed*Time.deltaTime;
+        float deltMpx = Mathf.Clamp((mousePos.x-centerX)/(controlCircleRadius*2),-1f,1f);
+        float deltMpy = Mathf.Clamp((mousePos.y-centerY)/(controlCircleRadius*2),-1f,1f);
+        // mpAnimCurve.Evaluate()
+        mpx = Mathf.Lerp(mpx,Mathf.Sign(deltMpx)*mpAnimCurve.Evaluate(Mathf.Abs(deltMpx)),deltaEase);
+        mpy = Mathf.Lerp(mpy,Mathf.Sign(deltMpy)*mpAnimCurve.Evaluate(Mathf.Abs(deltMpy)),deltaEase);
 
         // Below: update size of the circle UI
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.height * ControlCircleSize);
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * ControlCircleSize);
+        print("screen height: " + Screen.height);
     }
 
     void UpdateThrustMult() {
         float vin = Input.GetAxis("Vertical");
-        if(vin == 0) {
-            if(thrustMult>1) {
-                thrustMult -= ThrustEaseSpeed * Time.deltaTime;
-            }
-            else if(thrustMult<1) {
-                thrustMult += ThrustEaseSpeed * 0.5f * Time.deltaTime;
-            }
-        }
-        else if(vin > 0) {
-            thrustMult += ThrustEaseSpeed * Time.deltaTime;
-        }
-        else if(vin < 0) {
-            thrustMult -= ThrustEaseSpeed * 0.5f * Time.deltaTime;
-        }
-        thrustMult = Mathf.Clamp(thrustMult,0.5f,2f);
+        thrustEaser = Mathf.Lerp(thrustEaser,vin,ThrustEaseSpeed*ThrustEaseAnimCurve.Evaluate(Mathf.Abs(vin-thrustEaser))*Time.deltaTime);
+        thrustMult = thrustAnimCurve.Evaluate(thrustEaser);
         Camera.main.fieldOfView = 60f + (thrustMult - 1f)*20f;
     }
 }
