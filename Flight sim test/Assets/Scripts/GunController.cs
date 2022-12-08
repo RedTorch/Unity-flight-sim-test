@@ -22,6 +22,7 @@ public class GunController : MonoBehaviour
         else if(Input.GetButton("Fire1")) {
             Instantiate(Bullet,transform.position,transform.rotation);
             fireCooldown += FireIntervalInSeconds;
+            // CameraShake.Shake(0.25f,0.25f);
         }
     }
 }

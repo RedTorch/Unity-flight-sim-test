@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthManager : MonoBehaviour
 {
     public float MaxHealth = 10f;
     public GameObject ExplosionPrefab;
+    public TMP_Text Data;
     private float Health;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,9 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // empty
+        if(Data) {
+            Data.text = "Health: " + Health;
+        }
     }
 
     public float GetHealth() {

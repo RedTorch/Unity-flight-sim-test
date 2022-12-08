@@ -110,6 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d28831ba80184e55aae0031d8b3e69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 1
   SpeedInMetersPerSecond: 600
   MaxDistance: 120
