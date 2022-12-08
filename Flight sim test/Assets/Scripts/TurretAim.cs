@@ -12,6 +12,7 @@ public class TurretAim : MonoBehaviour
     private bool isFiring = true;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
+    private Transform[] Targets;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class TurretAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Target = GetClosestEnemy(GameObject.FindGameObjectsWithTag("Player"));
         if(fireCooldown > 0) {
             fireCooldown -= Time.deltaTime;
         }
@@ -30,5 +32,24 @@ public class TurretAim : MonoBehaviour
             b.transform.Rotate(spreadVec);
             fireCooldown += FireIntervalInSeconds;
         }
+    }
+
+    GameObject GetClosestEnemy (GameObject[] enemies)
+    {
+        GameObject bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach(GameObject potentialTarget in enemies)
+        {
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if(dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget;
+            }
+        }
+     
+        return bestTarget;
     }
 }

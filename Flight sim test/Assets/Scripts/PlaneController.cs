@@ -21,6 +21,8 @@ public class PlaneController : MonoBehaviour
     [Tooltip("0 < x <= 1. Percent diameter of mouse control circle relative to height of screen.")]
     public float ControlCircleSize = 0.6f;
 
+    public bool EnhanceMouseControlScaling = true;
+
     [SerializeField] private AnimationCurve mpAnimCurve;
     [SerializeField] private AnimationCurve thrustAnimCurve;
     [SerializeField] private AnimationCurve ThrustEaseAnimCurve;
@@ -53,9 +55,14 @@ public class PlaneController : MonoBehaviour
         float deltaEase = MpxEaseSpeed*Time.deltaTime;
         float deltMpx = Mathf.Clamp((mousePos.x-centerX)/(controlCircleRadius*2),-1f,1f);
         float deltMpy = Mathf.Clamp((mousePos.y-centerY)/(controlCircleRadius*2),-1f,1f);
-        // mpAnimCurve.Evaluate()
-        mpx = Mathf.Lerp(mpx,Mathf.Sign(deltMpx)*mpAnimCurve.Evaluate(Mathf.Abs(deltMpx)),deltaEase);
-        mpy = Mathf.Lerp(mpy,Mathf.Sign(deltMpy)*mpAnimCurve.Evaluate(Mathf.Abs(deltMpy)),deltaEase);
+        if(EnhanceMouseControlScaling) {
+            mpx = Mathf.Lerp(mpx,Mathf.Sign(deltMpx)*mpAnimCurve.Evaluate(Mathf.Abs(deltMpx)),deltaEase);
+            mpy = Mathf.Lerp(mpy,Mathf.Sign(deltMpy)*mpAnimCurve.Evaluate(Mathf.Abs(deltMpy)),deltaEase);
+        }
+        else {
+            mpx = Mathf.Lerp(mpx,deltMpx,deltaEase);
+            mpy = Mathf.Lerp(mpy,deltMpy,deltaEase);
+        }
 
         // Below: update size of the circle UI
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.height * ControlCircleSize);
