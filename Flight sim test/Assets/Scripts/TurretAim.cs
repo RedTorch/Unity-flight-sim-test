@@ -6,6 +6,7 @@ public class TurretAim : MonoBehaviour
 {
     public GameObject Bullet;
     public GameObject Target;
+    public GameObject IndicatorCube;
     public float RPM = 120f;
     public float SpreadInDegs = 5f;
     public float DetectRangeInMeters = 200f;
@@ -23,14 +24,20 @@ public class TurretAim : MonoBehaviour
     void Update()
     {
         Target = GetClosestEnemy(GameObject.FindGameObjectsWithTag("Player"));
+        float dist = Vector3.Distance(transform.position,Target.transform.position);
         if(fireCooldown > 0) {
             fireCooldown -= Time.deltaTime;
         }
-        else if(isFiring && Vector3.Distance(transform.position,Target.transform.position) <= DetectRangeInMeters) {
-            GameObject b = Instantiate(Bullet,transform.position + new Vector3(0f,4f,0f),Quaternion.LookRotation(Target.transform.position-transform.position));
+        else if(isFiring && dist <= DetectRangeInMeters) {
+            float deltaT = dist / Bullet.GetComponent<BulletController>().SpeedInMetersPerSecond;
+            Vector3 targPositionOffset = Target.GetComponent<Rigidbody>().velocity * deltaT;
+            Vector3 projectedTargetPosition = Target.transform.position + (targPositionOffset);
+            // Instantiate(IndicatorCube,projectedTargetPosition,Quaternion.identity);
+            GameObject b = Instantiate(Bullet,transform.position + new Vector3(0f,4f,0f),Quaternion.LookRotation(projectedTargetPosition - transform.position));
             Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
             b.transform.Rotate(spreadVec);
             fireCooldown += FireIntervalInSeconds;
+
         }
     }
 

@@ -20,6 +20,7 @@ public class PlaneController : MonoBehaviour
     public float ThrustEaseSpeed = 1f;
     [Tooltip("0 < x <= 1. Percent diameter of mouse control circle relative to height of screen.")]
     public float ControlCircleSize = 0.6f;
+    public float DefaultFov;
 
     public bool EnhanceMouseControlScaling = true;
 
@@ -34,7 +35,7 @@ public class PlaneController : MonoBehaviour
 
     void Start()
     {
-
+        DefaultFov = Camera.main.fieldOfView;
     }
 
     void Update()
@@ -74,6 +75,6 @@ public class PlaneController : MonoBehaviour
         float vin = Input.GetAxis("Vertical");
         thrustEaser = Mathf.Lerp(thrustEaser,vin,ThrustEaseSpeed*ThrustEaseAnimCurve.Evaluate(Mathf.Abs(vin-thrustEaser))*Time.deltaTime);
         thrustMult = thrustAnimCurve.Evaluate(thrustEaser);
-        Camera.main.fieldOfView = 60f + (thrustMult - 1f)*20f;
+        Camera.main.fieldOfView = DefaultFov + (thrustMult - 1f)*20f;
     }
 }

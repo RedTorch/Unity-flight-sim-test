@@ -6,20 +6,23 @@ public class AutoDestroySelf : MonoBehaviour
 {
     public float Time = 10f;
     private ParticleSystem ps;
+    private bool isNull = false;
     // Start is called before the first frame update
     void Start()
     {
         // If there is a particle system, override the given Time and destroy when particle system is done
-        ps = GetComponent<ParticleSystem>();
-        if(!ps) {
+        if(gameObject.GetComponent<ParticleSystem>() == null) {
             Destroy(gameObject,Time);
+            isNull = true;
+            return;
         }
+        ps = gameObject.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!ps.IsAlive())
+        if(!isNull && !ps.IsAlive())
         {
             Destroy(gameObject);
         }

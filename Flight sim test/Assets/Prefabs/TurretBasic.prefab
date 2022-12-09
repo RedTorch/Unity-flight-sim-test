@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 7550110613858325111, guid: 8c34149e765224aa6970e8f964d00002, type: 3}
   Target: {fileID: 0}
+  IndicatorCube: {fileID: 34902680548873050, guid: 1cdd63646a5f9432683b1d7409ce463c, type: 3}
   RPM: 360
   SpreadInDegs: 0.5
   DetectRangeInMeters: 300
