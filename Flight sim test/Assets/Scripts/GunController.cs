@@ -8,6 +8,7 @@ public class GunController : MonoBehaviour
     public float RPM = 120f;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
+    public float SpreadInDegs = 5f;
 
     void Start() 
     {
@@ -20,7 +21,9 @@ public class GunController : MonoBehaviour
             fireCooldown -= Time.deltaTime;
         }
         else if(Input.GetButton("Fire1")) {
-            Instantiate(Bullet,transform.position,transform.rotation);
+            GameObject b = Instantiate(Bullet,transform.position,transform.rotation);
+            Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
+            b.transform.Rotate(spreadVec);
             fireCooldown += FireIntervalInSeconds;
             // CameraShake.Shake(0.25f,0.25f);
         }
