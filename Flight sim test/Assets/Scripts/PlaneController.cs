@@ -8,6 +8,8 @@ public class PlaneController : MonoBehaviour
 
     public GameObject CircleUI;
 
+    public Canvas MainUiCanvas;
+
     public float SpeedInMetersPerSecond = 1f;
     public float RollSpeed = 2f;
     public float PitchSpeed = 2f;
@@ -44,6 +46,7 @@ public class PlaneController : MonoBehaviour
         UpdateMP();
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * SpeedInMetersPerSecond * thrustMult;
         gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,Input.GetAxis("Horizontal")*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
+        //canvas = FindObjectOfType<Canvas>();
     }
 
     void UpdateMP() {
@@ -66,8 +69,9 @@ public class PlaneController : MonoBehaviour
         }
 
         // Below: update size of the circle UI
-        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, Screen.height * ControlCircleSize);
-        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Screen.height * ControlCircleSize);
+        float h = MainUiCanvas.GetComponent<RectTransform>().rect.height;
+        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, h * ControlCircleSize);
+        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, h * ControlCircleSize);
         print("screen height: " + Screen.height);
     }
 
