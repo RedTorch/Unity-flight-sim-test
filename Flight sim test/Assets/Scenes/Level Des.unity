@@ -996,6 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CircleUI: {fileID: 1792339339}
+  MainUiCanvas: {fileID: 1820737646}
   SpeedInMetersPerSecond: 50
   RollSpeed: 90
   PitchSpeed: 80
@@ -4131,6 +4132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CircleUI: {fileID: 1792339339}
+  MainUiCanvas: {fileID: 0}
   SpeedInMetersPerSecond: 50
   RollSpeed: 90
   PitchSpeed: 80
