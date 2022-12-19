@@ -375,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 7550110613858325111, guid: 8c34149e765224aa6970e8f964d00002, type: 3}
   RPM: 600
+  SpreadInDegs: 5
 --- !u!1 &354158570
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CircleUI: {fileID: 1792339339}
+  MainUiCanvas: {fileID: 1820737646}
   SpeedInMetersPerSecond: 50
   RollSpeed: 90
   PitchSpeed: 50
@@ -742,6 +744,7 @@ MonoBehaviour:
   MpyEaseSpeed: 8
   ThrustEaseSpeed: 4
   ControlCircleSize: 0.8
+  DefaultFov: 0
   EnhanceMouseControlScaling: 1
   mpAnimCurve:
     serializedVersion: 2
@@ -1618,6 +1621,7 @@ MonoBehaviour:
   WorldObject: {fileID: 1949845174}
   Ground: {fileID: 3028684910839657719, guid: cfcc1ebe440084c079405683a8c664a0, type: 3}
   Turret: {fileID: 4064678645616613802, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
+  Obstacle: {fileID: 0}
 --- !u!1 &1949845174
 GameObject:
   m_ObjectHideFlags: 0
