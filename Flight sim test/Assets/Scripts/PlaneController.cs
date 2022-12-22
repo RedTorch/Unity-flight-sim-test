@@ -10,6 +10,9 @@ public class PlaneController : MonoBehaviour
 
     public Canvas MainUiCanvas;
 
+    public CameraManager CamManager;
+
+    [Tooltip("For reference, the cruise speed of an F-22 is 545 meters per second --> 90 m/s at the 1:6 scale of the player model. The top speed, on the other hand, is 670 / 6 --> ~112 m/s which should be considered the maximum plausible speed assuming a modern fighter jet.")]
     public float SpeedInMetersPerSecond = 1f;
     public float RollSpeed = 2f;
     public float PitchSpeed = 2f;
@@ -35,17 +38,35 @@ public class PlaneController : MonoBehaviour
     private float thrustEaser = 0f;
     private float thrustMult = 1f;
 
+    private float SecondsUntilEnabled = 2f;
+
+    private bool IsControlsEnabled = false;
+
     void Start()
     {
-        DefaultFov = Camera.main.fieldOfView;
+        DefaultFov = CamManager.GetMainCam().fieldOfView;
+        float controlCircleRadius = (Screen.height/2) * ControlCircleSize;
+        float h = MainUiCanvas.GetComponent<RectTransform>().rect.height;
+        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, h * ControlCircleSize);
+        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, h * ControlCircleSize);
     }
 
     void Update()
     {
-        UpdateThrustMult();
-        UpdateMP();
+        if(IsControlsEnabled) {
+            UpdateThrustMult();
+            UpdateMP();
+            gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,Input.GetAxis("Horizontal")*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
+        }
+        else {
+            SecondsUntilEnabled -= Time.deltaTime;
+            print("Controls enabled in " + SecondsUntilEnabled + "s");
+            if(SecondsUntilEnabled <= 0) {
+                print("Controls enabled! Welcome to the friendly skies :)");
+                IsControlsEnabled = true;
+            }
+        }
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * SpeedInMetersPerSecond * thrustMult;
-        gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,Input.GetAxis("Horizontal")*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
         //canvas = FindObjectOfType<Canvas>();
     }
 
@@ -72,13 +93,12 @@ public class PlaneController : MonoBehaviour
         float h = MainUiCanvas.GetComponent<RectTransform>().rect.height;
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, h * ControlCircleSize);
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, h * ControlCircleSize);
-        print("screen height: " + Screen.height);
     }
 
     void UpdateThrustMult() {
         float vin = Input.GetAxis("Vertical");
         thrustEaser = Mathf.Lerp(thrustEaser,vin,ThrustEaseSpeed*ThrustEaseAnimCurve.Evaluate(Mathf.Abs(vin-thrustEaser))*Time.deltaTime);
         thrustMult = thrustAnimCurve.Evaluate(thrustEaser);
-        Camera.main.fieldOfView = DefaultFov + (thrustMult - 1f)*20f;
+        CamManager.GetMainCam().fieldOfView = DefaultFov + (thrustMult - 1f)*20f;
     }
 }
