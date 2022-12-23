@@ -17,7 +17,7 @@ public class DamageReceiver : MonoBehaviour
         
     }
 
-    public void TakeDamage(float damage) {
-        parent.GetComponent<HealthManager>().TakeDamage(damage);
+    public void TakeDamage(float damage, string parentTag) {
+        parent.GetComponent<HealthManager>().TakeDamage(damage, parentTag);
     }
 }

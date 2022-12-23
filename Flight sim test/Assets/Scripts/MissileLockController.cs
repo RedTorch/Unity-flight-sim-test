@@ -5,13 +5,13 @@ using UnityEngine;
 public class MissileLockController : MonoBehaviour
 {
     private bool MissileTracking = false;
-    private float LockRange = 2000f;
-    private float LockAngle = 20f;
+    [SerializeField] private float LockRange = 2000f;
+    [SerializeField] private float LockAngle = 20f;
 
 
     // hacky code alert below!
 
-    public GameObject Bullet;
+    public GameObject Missile;
     public float RPM = 600f;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
@@ -26,28 +26,36 @@ public class MissileLockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TryLock(GameObject.FindWithTag("Enemy"));
-    }
-
-    void TryLock(GameObject target) {
-        MissileTracking = false;
-        Quaternion targetAngle = Quaternion.identity;
-        Vector3 delta = target.transform.position - transform.position;
-        if (delta.magnitude <= LockRange && Vector3.Angle(transform.forward, delta) <= LockAngle) {
-            MissileTracking = true;
-            targetAngle = Quaternion.LookRotation(delta);
-        }
-        
+        List<GameObject> targets = FindAllLockEligible();
+        //TryLock(GameObject.FindWithTag("Enemy"));
         if(fireCooldown > 0) {
             fireCooldown -= Time.deltaTime;
         }
-        else if(MissileTracking) {
-            GameObject b = Instantiate(Bullet,transform.position,targetAngle);
-            Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
-            b.transform.Rotate(spreadVec);
+        else if(targets.Count > 0) {
+            foreach(GameObject target in targets) {
+                Quaternion targetAngle = Quaternion.LookRotation(target.transform.position-transform.position);
+                GameObject b = Instantiate(Missile,transform.position,targetAngle);
+                Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
+                b.transform.Rotate(spreadVec);
+                b.GetComponent<BulletController>().SetParentTag("Player");
+                b.GetComponent<BulletController>().SetDamage(1000);
+            }
             fireCooldown += FireIntervalInSeconds;
-            // CameraShake.Shake(0.25f,0.25f);
         }
-    }  
+    }
+
+    public List<GameObject> FindAllLockEligible() {
+        List<GameObject> toReturn = new List<GameObject>();
+        Quaternion targetAngle = Quaternion.identity;
+        Vector3 delta;
+        foreach(GameObject target in GameObject.FindGameObjectsWithTag("Enemy")) {
+            delta = target.transform.position - transform.position;
+            if (delta.magnitude <= LockRange && Vector3.Angle(transform.forward, delta) <= LockAngle) {
+                targetAngle = Quaternion.LookRotation(delta);
+                toReturn.Add(target);
+            }
+        }
+        return toReturn;
+    }
 
 }

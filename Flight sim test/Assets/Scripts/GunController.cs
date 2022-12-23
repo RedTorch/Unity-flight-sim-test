@@ -24,6 +24,7 @@ public class GunController : MonoBehaviour
             GameObject b = Instantiate(Bullet,transform.position,transform.rotation);
             Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
             b.transform.Rotate(spreadVec);
+            b.GetComponent<BulletController>().SetParentTag("Player");
             fireCooldown += FireIntervalInSeconds;
             // CameraShake.Shake(0.25f,0.25f);
         }

@@ -27,7 +27,12 @@ public class HealthManager : MonoBehaviour
         return Health;
     }
 
-    public void TakeDamage(float damage = 1f) {
+    public void TakeDamage(float damage, string parentTag) {
+        if(parentTag == gameObject.tag) {
+            print("friendly fire rejected by " + gameObject.tag + " --- bullet: " + parentTag);
+            return;
+        }
+        print("damage taken by " + gameObject.tag + " --- bullet: " + parentTag);
         Health -= damage;
         if(Health <= 0) {
             OnDestroy();

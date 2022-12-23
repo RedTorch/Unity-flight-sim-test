@@ -536,14 +536,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570690424}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 599bda182df764df2b8346adbb658e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 7550110613858325111, guid: 8c34149e765224aa6970e8f964d00002, type: 3}
-  RPM: 600
-  SpreadInDegs: 0.2
+  LockRange: 2000
+  LockAngle: 50
+  Missile: {fileID: 7550110613858325111, guid: c52eb7f94169c49d996ca451cf75534d, type: 3}
+  RPM: 120
+  SpreadInDegs: 0
 --- !u!4 &592393893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
@@ -1863,63 +1865,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 22.588, y: 0, z: 0}
---- !u!1001 &1637189988
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4064678645616613802, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_Name
-      value: TurretBasic
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064678645616613805, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
 --- !u!1 &1792339339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,7 +2151,7 @@ MonoBehaviour:
   GroundEnabled: 0
   GroundScaleXZ: {x: 0, y: 0}
   Turret: {fileID: 4064678645616613802, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
-  TurretEnabled: 0
+  TurretEnabled: 1
   Obstacle: {fileID: 3288752996978656576, guid: 7f8d0a9317eb749ed8361d0abb8cb1bb, type: 3}
   ObstacleEnabled: 0
 --- !u!114 &1845860053
@@ -3636,6 +3581,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2427833589361703759, guid: b378d493cf66145009228901bcb498be, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fed834ad4f0714c83b2c660d94c556af, type: 2}
     - target: {fileID: 3922899607875080101, guid: b378d493cf66145009228901bcb498be, type: 3}
       propertyPath: m_LocalPosition.z
       value: 23.13
