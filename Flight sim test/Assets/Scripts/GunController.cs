@@ -5,10 +5,10 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public GameObject Bullet;
-    public float RPM = 120f;
+    public float RPM = 600f;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
-    public float SpreadInDegs = 5f;
+    public float SpreadInDegs = 0.2f;
 
     void Start() 
     {

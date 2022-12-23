@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 7550110613858325000}
   - component: {fileID: 7550110613858325003}
   - component: {fileID: 7550110613858325002}
-  - component: {fileID: 7550110613858325109}
   - component: {fileID: 7550110613858325108}
   - component: {fileID: 3537618259561137528}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7550110613858325109
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550110613858325111}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7550110613858325108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   SpeedInMetersPerSecond: 600
-  MaxDistance: 500
+  MaxDistance: 800
 --- !u!96 &3537618259561137528
 TrailRenderer:
   serializedVersion: 2
