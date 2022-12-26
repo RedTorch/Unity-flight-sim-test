@@ -28,7 +28,7 @@ public class PlaneController : MonoBehaviour
 
     private float mpx = 0f;
     private float mpy = 0f;
-    private float thrustEaser = 0f; //default 0
+    private float thrustEaser = 1f; //default 0
     private float thrustMult = 1f; //default 1
 
     private float SecondsUntilEnabled = 2f;
@@ -51,7 +51,9 @@ public class PlaneController : MonoBehaviour
             CamManager.GetMainCam().fieldOfView = DefaultFov + (thrustMult - 1f)*20f;
             mpx = pInput.GetVals()[0];
             mpy = pInput.GetVals()[1];
-            gameObject.transform.Rotate(mpy*PitchSpeed*Time.deltaTime,pInput.GetVals()[2]*YawSpeed*Time.deltaTime,-1f*mpx*RollSpeed*Time.deltaTime);
+            float rollAmount = ((1f/thrustMult)+1f)*mpy*PitchSpeed*Time.deltaTime;
+            float pitchAmount = ((1f/thrustMult)+1f)*-1f*mpx*RollSpeed*Time.deltaTime;
+            gameObject.transform.Rotate(rollAmount,pInput.GetVals()[2]*YawSpeed*Time.deltaTime,pitchAmount);
         }
         else {
             SecondsUntilEnabled -= Time.deltaTime;
@@ -59,6 +61,8 @@ public class PlaneController : MonoBehaviour
                 IsControlsEnabled = true;
             }
         }
+        thrustMult = thrustAnimCurve.Evaluate(thrustEaser);
+        CamManager.GetMainCam().fieldOfView = DefaultFov + (thrustMult - 1f)*20f;
         gameObject.GetComponent<Rigidbody>().velocity = transform.forward * SpeedInMetersPerSecond * thrustMult;
         CamRotate.UpdateAngles(mpx,mpy);
     }

@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public GameObject CircleUI;
-    public Canvas MainUiCanvas;
-    
+    public MainUIManager uiman;
     public float ControlCircleSize = 0.8f;
-
     public float MouseEaseSpeed = 8f;
 
     private float mpx, mpy;
@@ -16,13 +13,13 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetControlCircleSize();
+        SetControlCircleSize(ControlCircleSize);
     }
 
     // Update is called once per frame
     void Update()
     {
-        SetControlCircleSize();
+        //
     }
 
     private float[] GetInputMouse() {
@@ -35,12 +32,12 @@ public class PlayerInput : MonoBehaviour
         float deltMpy = Mathf.Clamp((mousePos.y-centerY)/(controlCircleRadius*2),-1f,1f);
         mpx = Mathf.Lerp(mpx,deltMpx,deltaEase);
         mpy = Mathf.Lerp(mpy,deltMpy,deltaEase);
-        float[] ret = {mpx, mpy};
+        float[] ret = {Mathf.Floor(mpx*100f)/100f, Mathf.Floor(mpy*100f)/100f};
         return ret;
     }
 
     private float[] GetInputWasd() {
-        float[] ret = {Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")};
+        float[] ret = {Mathf.Floor(Input.GetAxis("Horizontal")*100f)/100f, Mathf.Floor(Input.GetAxis("Vertical")*100f)/100f};
         return ret;
     }
 
@@ -51,10 +48,14 @@ public class PlayerInput : MonoBehaviour
         return ret;
     }
 
-    public void SetControlCircleSize() {
-        // Below: update size of the circle UI
-        float h = MainUiCanvas.GetComponent<RectTransform>().rect.height;
-        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, h * ControlCircleSize);
-        CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, h * ControlCircleSize);
+    public float GetControlCircleSize() {
+        return ControlCircleSize;
+    }
+
+    public void SetControlCircleSize(float value) {
+        if(value > 0) {
+            ControlCircleSize = value;
+        }
+        uiman.UpdateControlCircleSprite(ControlCircleSize);
     }
 }
