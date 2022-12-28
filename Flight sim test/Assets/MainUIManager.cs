@@ -37,14 +37,14 @@ public class MainUIManager : MonoBehaviour
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, h * size);
     }
 
-    public void setSpeakerAndMessage(string speaker = "", string message = "", string speakerType = "friendly") {
+    public void setSpeakerAndMessage(string speaker = "", string message = "", string isFriendly = "friendly") {
         if(speaker=="" && message=="") {
             dialogueBackground.enabled = false;
         }
         dialogueBackground.enabled = true;
         dialogueSpeakerLabel.text = speaker;
         dialogue.text = message;
-        if(speakerType == "enemy") {
+        if(isFriendly == "enemy") {
             dialogueSpeakerLabel.color = new Color(1f,0f,0f,1f);
         }
         else {
