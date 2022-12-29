@@ -24,12 +24,12 @@ public class PlayerInput : MonoBehaviour
 
     private float[] GetInputMouse() {
         Vector3 mousePos = Input.mousePosition;
-        float controlCircleRadius = (Screen.height/2) * ControlCircleSize;
+        float controlCircleRadius = (Screen.height) * ControlCircleSize / 2f;
         float centerX = Screen.width / 2;
         float centerY = Screen.height / 2;
         float deltaEase = MouseEaseSpeed*Time.deltaTime;
-        float deltMpx = Mathf.Clamp((mousePos.x-centerX)/(controlCircleRadius*2),-1f,1f);
-        float deltMpy = Mathf.Clamp((mousePos.y-centerY)/(controlCircleRadius*2),-1f,1f);
+        float deltMpx = Mathf.Clamp((mousePos.x-centerX)/(controlCircleRadius),-1f,1f);
+        float deltMpy = Mathf.Clamp((mousePos.y-centerY)/(controlCircleRadius),-1f,1f);
         mpx = Mathf.Lerp(mpx,deltMpx,deltaEase);
         mpy = Mathf.Lerp(mpy,deltMpy,deltaEase);
         float[] ret = {Mathf.Floor(mpx*100f)/100f, Mathf.Floor(mpy*100f)/100f};
@@ -53,9 +53,12 @@ public class PlayerInput : MonoBehaviour
     }
 
     public void SetControlCircleSize(float value) {
-        if(value > 0) {
-            ControlCircleSize = value;
+        if(value <= 0 || value > 1 || value == 0.6f) {
+            print("invalid control circle size set: " + value);
+            return;
         }
+        print("setting control circle: " + value);
+        ControlCircleSize = value;
         uiman.UpdateControlCircleSprite(ControlCircleSize);
     }
 }

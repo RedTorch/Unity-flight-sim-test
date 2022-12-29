@@ -9,6 +9,8 @@ public class MainUIManager : MonoBehaviour
     public TMP_Text cornerText;
 
     public Image dialogueBackground;
+
+    public bool isBackgroundEnabled = true;
     public TMP_Text dialogue;
     public TMP_Text dialogueSpeakerLabel;
     public GameObject CircleUI;
@@ -22,6 +24,7 @@ public class MainUIManager : MonoBehaviour
     {
         // setSpeakerAndMessage("Bad Guy!", "This is a message", "enemy");
         setSpeakerAndMessage();
+        dialogueBackground.enabled = isBackgroundEnabled;
     }
 
     // Update is called once per frame
@@ -32,16 +35,22 @@ public class MainUIManager : MonoBehaviour
 
     public void UpdateControlCircleSprite(float size) {
         // Below: update size of the circle UI
+        print("updating control circle sprite: size = " + size);
+        float hh = Screen.height;
         float h = MainUiCanvas.GetComponent<RectTransform>().rect.height;
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, h * size);
         CircleUI.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, h * size);
+        print("size set with Screen.height = " + hh + ", MainUiCanvas.GetComponent<RectTransform>().rect.height = " + h);
     }
 
     public void setSpeakerAndMessage(string speaker = "", string message = "", string isFriendly = "friendly") {
         if(speaker=="" && message=="") {
             dialogueBackground.enabled = false;
+            dialogueSpeakerLabel.text = "";
+            dialogue.text = "";
+            return;
         }
-        dialogueBackground.enabled = true;
+        dialogueBackground.enabled = isBackgroundEnabled;
         dialogueSpeakerLabel.text = speaker;
         dialogue.text = message;
         if(isFriendly == "enemy") {

@@ -8,19 +8,10 @@ public class MissileLockController : MonoBehaviour
     [SerializeField] private float LockRange = 2000f;
     [SerializeField] private float LockAngle = 20f;
 
-
-    // hacky code alert below!
-
-    public GameObject Missile;
-    public float RPM = 600f;
-    private float FireIntervalInSeconds;
-    private float fireCooldown = 0f;
-    public float SpreadInDegs = 0.2f;
-
     // Start is called before the first frame update
     void Start()
     {
-        FireIntervalInSeconds = 60 / RPM;
+        //
     }
 
     // Update is called once per frame
@@ -28,19 +19,10 @@ public class MissileLockController : MonoBehaviour
     {
         List<GameObject> targets = FindAllLockEligible();
         //TryLock(GameObject.FindWithTag("Enemy"));
-        if(fireCooldown > 0) {
-            fireCooldown -= Time.deltaTime;
-        }
-        else if(targets.Count > 0) {
+        if(targets.Count > 0) {
             foreach(GameObject target in targets) {
-                Quaternion targetAngle = Quaternion.LookRotation(target.transform.position-transform.position);
-                GameObject b = Instantiate(Missile,transform.position,targetAngle);
-                Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
-                b.transform.Rotate(spreadVec);
-                b.GetComponent<BulletController>().SetParentTag("Player");
-                b.GetComponent<BulletController>().SetDamage(1000);
+                print(target.transform.position);
             }
-            fireCooldown += FireIntervalInSeconds;
         }
     }
 
