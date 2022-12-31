@@ -21,7 +21,7 @@ public class MissileLockController : MonoBehaviour
         //TryLock(GameObject.FindWithTag("Enemy"));
         if(targets.Count > 0) {
             foreach(GameObject target in targets) {
-                print(target.transform.position);
+                // print(target.transform.position);
             }
         }
     }

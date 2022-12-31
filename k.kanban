@@ -1,0 +1,182 @@
+{
+  "lists": [
+    {
+      "id": "5c9c35f2-6389-409e-ae27-8da6cf21e7ae",
+      "title": "Brainstorm",
+      "cards": []
+    },
+    {
+      "id": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
+      "title": "Todo",
+      "cards": [
+        {
+          "id": "191b70ba-4624-4702-a76c-1ded7d794280",
+          "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
+          "title": "Enemy AI",
+          "description": "",
+          "labels": [
+            {
+              "id": "f40ef48b-4540-4dc8-aa60-7011b19da7f2",
+              "title": "Code",
+              "color": "#0079bf"
+            },
+            {
+              "id": "ec8dc4ef-3f9f-417f-9c07-cc7d23824780",
+              "title": "High 🔥",
+              "color": "#ff9f1a"
+            }
+          ],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "04340739-a5d8-4a4c-8901-0a60a66d90cf",
+          "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
+          "title": "Basic Music and SFX",
+          "description": "",
+          "labels": [
+            {
+              "id": "c1ca9fb1-5482-4848-94dc-46926ac42ac8",
+              "title": "Audio",
+              "color": "#61bd4f"
+            }
+          ],
+          "checkboxes": [
+            {
+              "id": "857b814b-2592-4059-9c9c-9fac4af574b7",
+              "title": "BGM - Menu",
+              "checked": false
+            },
+            {
+              "id": "114d23f6-771e-4235-aa7e-878be7981bc5",
+              "title": "BGM - Game",
+              "checked": false
+            },
+            {
+              "id": "c75ce242-0623-4a5f-80b9-cfd073eecfe0",
+              "title": "Sound effect: explosion (attach to obj)",
+              "checked": false
+            },
+            {
+              "id": "f59dc672-e22e-4d45-bcaa-a91651829038",
+              "title": "Gun sound",
+              "checked": false
+            },
+            {
+              "id": "b4bd3f26-41fe-4b7d-a860-cdda81d65f75",
+              "title": "Plane engine sound (scale pitch/ volume to speed)",
+              "checked": false
+            }
+          ],
+          "comments": []
+        },
+        {
+          "id": "465a94c5-9341-4ea2-b40a-e35209982303",
+          "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
+          "title": "Missile types",
+          "description": "",
+          "labels": [
+            {
+              "id": "6e46adb5-48b3-4f2c-9edb-f337f2c7ccc5",
+              "title": "Design",
+              "color": "#00c2e0"
+            }
+          ],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
+      "title": "Doing",
+      "cards": [
+        {
+          "id": "6c0fc155-1945-488c-a487-ab385c94645e",
+          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
+          "title": "Missile lock",
+          "description": "",
+          "labels": [
+            {
+              "id": "f40ef48b-4540-4dc8-aa60-7011b19da7f2",
+              "title": "Code",
+              "color": "#0079bf"
+            },
+            {
+              "id": "ec8dc4ef-3f9f-417f-9c07-cc7d23824780",
+              "title": "High 🔥",
+              "color": "#ff9f1a"
+            }
+          ],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "f4405815-73f0-476b-8e3a-478d16310028",
+      "title": "Done",
+      "cards": [
+        {
+          "id": "51377548-2815-4003-9f15-95b69aa11aff",
+          "listId": "f4405815-73f0-476b-8e3a-478d16310028",
+          "title": "UI",
+          "description": "",
+          "labels": [
+            {
+              "id": "3254d61b-b7b7-49fa-af74-f34670f7ee70",
+              "title": "Visual / UI",
+              "color": "#f2d600"
+            }
+          ],
+          "checkboxes": [
+            {
+              "id": "66c6cd86-7995-449a-b50b-2c80d33bd7fb",
+              "title": "Change cursor to better one",
+              "checked": true
+            },
+            {
+              "id": "943b933c-11e4-44aa-9723-e59e5673d514",
+              "title": "Change crosshairs to more robust/ visible/ usable system-- UI-level image?",
+              "checked": true
+            }
+          ],
+          "comments": []
+        }
+      ]
+    }
+  ],
+  "archive": {
+    "lists": [],
+    "cards": []
+  },
+  "settings": {
+    "labels": [
+      {
+        "id": "3254d61b-b7b7-49fa-af74-f34670f7ee70",
+        "title": "Visual / UI",
+        "color": "#f2d600"
+      },
+      {
+        "id": "ec8dc4ef-3f9f-417f-9c07-cc7d23824780",
+        "title": "High 🔥",
+        "color": "#ff9f1a"
+      },
+      {
+        "id": "c1ca9fb1-5482-4848-94dc-46926ac42ac8",
+        "title": "Audio",
+        "color": "#61bd4f"
+      },
+      {
+        "id": "f40ef48b-4540-4dc8-aa60-7011b19da7f2",
+        "title": "Code",
+        "color": "#0079bf"
+      },
+      {
+        "id": "6e46adb5-48b3-4f2c-9edb-f337f2c7ccc5",
+        "title": "Design",
+        "color": "#00c2e0"
+      }
+    ]
+  }
+}

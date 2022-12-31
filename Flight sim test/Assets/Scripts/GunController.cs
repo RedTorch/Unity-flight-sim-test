@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public GameObject Bullet;
+    public MainUIManager uiMan;
     public float RPM = 600f;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
@@ -17,6 +18,7 @@ public class GunController : MonoBehaviour
 
     void Update() 
     {
+        SetReticlePosition();
         if(fireCooldown > 0) {
             fireCooldown -= Time.deltaTime;
         }
@@ -28,5 +30,10 @@ public class GunController : MonoBehaviour
             fireCooldown += FireIntervalInSeconds;
             // CameraShake.Shake(0.25f,0.25f);
         }
+    }
+
+    void SetReticlePosition() {
+        Vector3 aimPosWorldSpace = transform.position + (transform.forward * Bullet.GetComponent<BulletController>().MaxDistance);
+        uiMan.SetReticlePos(aimPosWorldSpace);
     }
 }
