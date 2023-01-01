@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 5
-  ExplosionPrefab: {fileID: 4675929755370880301, guid: e6302b26888a244258968989af58f0ab, type: 3}
+  ExplosionPrefab: {fileID: 4675929755370880301, guid: 707a95a8f00e54dec8d88abaeef4189c, type: 3}
 --- !u!114 &4064678645616613807
 MonoBehaviour:
   m_ObjectHideFlags: 0

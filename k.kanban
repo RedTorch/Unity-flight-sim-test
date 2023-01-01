@@ -110,6 +110,37 @@
           ],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "b536d9bd-1e90-47e9-894c-d221811e9615",
+          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
+          "title": "UI Elements",
+          "description": "",
+          "labels": [
+            {
+              "id": "3254d61b-b7b7-49fa-af74-f34670f7ee70",
+              "title": "Visual / UI",
+              "color": "#f2d600"
+            }
+          ],
+          "checkboxes": [
+            {
+              "id": "87e1d911-527b-4183-ba6a-d4138958d82b",
+              "title": "Healthbar",
+              "checked": false
+            },
+            {
+              "id": "924e058e-1ef6-4754-a528-ba587a6c3429",
+              "title": "Weapon select",
+              "checked": false
+            },
+            {
+              "id": "704e15bc-c716-490d-80bf-206c7efae9f0",
+              "title": "Show points given for target destroyed",
+              "checked": false
+            }
+          ],
+          "comments": []
         }
       ]
     },

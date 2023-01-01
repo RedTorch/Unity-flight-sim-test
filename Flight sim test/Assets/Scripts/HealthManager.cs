@@ -5,6 +5,7 @@ using TMPro;
 
 public class HealthManager : MonoBehaviour
 {
+    public MainUIManager uiman;
     public float MaxHealth = 10f;
     public GameObject ExplosionPrefab;
     private float Health;
@@ -14,6 +15,9 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         Health = MaxHealth;
+        if(uiman != null) {
+            uiman.UpdateHealthBar(Health/MaxHealth);
+        }
     }
 
     // Update is called once per frame
@@ -33,6 +37,9 @@ public class HealthManager : MonoBehaviour
         }
         if(verbose){print("damage taken by " + gameObject.tag + " --- bullet: " + parentTag);}
         Health -= damage;
+        if(uiman != null) {
+            uiman.UpdateHealthBar(Health/MaxHealth);
+        }
         if(Health <= 0) {
             OnDestroy();
         }

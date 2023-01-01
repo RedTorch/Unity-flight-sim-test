@@ -5,8 +5,12 @@ using UnityEngine;
 public class MissileLockController : MonoBehaviour
 {
     private bool MissileTracking = false;
+    private float TrackTime = 2f;
     [SerializeField] private float LockRange = 2000f;
     [SerializeField] private float LockAngle = 20f;
+
+    private Dictionary<GameObject, float> IsLocking = new Dictionary<GameObject, float>();
+    private List<GameObject> IsLocked = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +21,7 @@ public class MissileLockController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        List<GameObject> targets = FindAllLockEligible();
-        //TryLock(GameObject.FindWithTag("Enemy"));
-        if(targets.Count > 0) {
-            foreach(GameObject target in targets) {
-                // print(target.transform.position);
-            }
-        }
+        // UpdateLockedList();
     }
 
     public List<GameObject> FindAllLockEligible() {
@@ -38,6 +36,29 @@ public class MissileLockController : MonoBehaviour
             }
         }
         return toReturn;
+    }
+
+    public void UpdateLockedList() {
+        Dictionary<GameObject, float> newIsLocking = new Dictionary<GameObject,float>();
+        List<GameObject> targets = FindAllLockEligible();
+        IsLocked = new List<GameObject>();
+        if(targets.Count > 0) {
+            foreach(GameObject target in targets) {
+                if(IsLocking.ContainsKey(target)) {
+                    float targetTime = IsLocking[target];
+                    if(targetTime>=Time.time) {
+                        // remove from isLocking
+                        // add to IsLocked
+                    }
+                    else {
+                        // add to new list with previous time
+                    }
+                }
+                else {
+                    // add to new list with time = 0
+                }
+            }
+        }
     }
 
 }

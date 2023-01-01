@@ -10,6 +10,7 @@ public class MainUIManager : MonoBehaviour
     public Image dialogueBackground;
     public RectTransform reticle;
     public RectTransform cursor;
+    public Image healthbar;
 
     public bool isBackgroundEnabled = true;
     public TMP_Text dialogue;
@@ -103,6 +104,10 @@ public class MainUIManager : MonoBehaviour
         float ycomp = refHeight*((y/actHeight)-0.5f);
         Vector2 ret = new Vector2(xcomp,ycomp);
         return ret;
+    }
+
+    public void UpdateHealthBar(float percent) {
+        healthbar.fillAmount = percent;
     }
 
     void OnApplicationFocus(bool hasFocus)
