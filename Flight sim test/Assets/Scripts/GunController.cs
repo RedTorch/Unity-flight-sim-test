@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
+    public bool useInput = true;
     public GameObject Bullet;
     public MainUIManager uiMan;
     public float RPM = 600f;
+    private bool isFiring = false;
     private float FireIntervalInSeconds;
     private float fireCooldown = 0f;
     public float SpreadInDegs = 0.2f;
@@ -22,7 +24,7 @@ public class GunController : MonoBehaviour
         if(fireCooldown > 0) {
             fireCooldown -= Time.deltaTime;
         }
-        else if(Input.GetButton("Fire1")) {
+        else if((useInput && Input.GetButton("Fire1")) || (!useInput && isFiring)) {
             GameObject b = Instantiate(Bullet,transform.position,transform.rotation);
             Vector3 spreadVec = new Vector3(Random.Range(0f, SpreadInDegs), Random.Range(0f,SpreadInDegs), 0);
             b.transform.Rotate(spreadVec);
@@ -32,8 +34,14 @@ public class GunController : MonoBehaviour
         }
     }
 
+    public void SetIsFiring(bool i) {
+        isFiring = i;
+    }
+
     void SetReticlePosition() {
-        Vector3 aimPosWorldSpace = transform.position + (transform.forward * Bullet.GetComponent<BulletController>().MaxDistance);
-        uiMan.SetReticlePos(aimPosWorldSpace);
+        if(uiMan != null) {
+            Vector3 aimPosWorldSpace = transform.position + (transform.forward * Bullet.GetComponent<BulletController>().MaxDistance);
+            uiMan.SetReticlePos(aimPosWorldSpace);
+        }
     }
 }

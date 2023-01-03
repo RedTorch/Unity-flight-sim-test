@@ -41,12 +41,8 @@ public class HealthManager : MonoBehaviour
             uiman.UpdateHealthBar(Health/MaxHealth);
         }
         if(Health <= 0) {
-            OnDestroy();
+            Instantiate(ExplosionPrefab,transform.position,Quaternion.identity);
+            Destroy(gameObject);
         }
-    }
-
-    void OnDestroy() {
-        Instantiate(ExplosionPrefab,transform.position,Quaternion.identity);
-        Destroy(gameObject);
     }
 }
