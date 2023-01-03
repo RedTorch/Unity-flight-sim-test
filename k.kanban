@@ -10,6 +10,26 @@
       "title": "Todo",
       "cards": [
         {
+          "id": "6c0fc155-1945-488c-a487-ab385c94645e",
+          "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
+          "title": "Missile lock",
+          "description": "",
+          "labels": [
+            {
+              "id": "f40ef48b-4540-4dc8-aa60-7011b19da7f2",
+              "title": "Code",
+              "color": "#0079bf"
+            },
+            {
+              "id": "ec8dc4ef-3f9f-417f-9c07-cc7d23824780",
+              "title": "High 🔥",
+              "color": "#ff9f1a"
+            }
+          ],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
           "id": "191b70ba-4624-4702-a76c-1ded7d794280",
           "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
           "title": "Enemy AI",
@@ -92,30 +112,10 @@
       "title": "Doing",
       "cards": [
         {
-          "id": "6c0fc155-1945-488c-a487-ab385c94645e",
-          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
-          "title": "Missile lock",
-          "description": "",
-          "labels": [
-            {
-              "id": "f40ef48b-4540-4dc8-aa60-7011b19da7f2",
-              "title": "Code",
-              "color": "#0079bf"
-            },
-            {
-              "id": "ec8dc4ef-3f9f-417f-9c07-cc7d23824780",
-              "title": "High 🔥",
-              "color": "#ff9f1a"
-            }
-          ],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
           "id": "b536d9bd-1e90-47e9-894c-d221811e9615",
           "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
           "title": "UI Elements",
-          "description": "",
+          "description": "REQUIRES:\nFeature: multiple selectable weapon types\nFeature: points given to entity for target score",
           "labels": [
             {
               "id": "3254d61b-b7b7-49fa-af74-f34670f7ee70",
@@ -140,6 +140,15 @@
               "checked": false
             }
           ],
+          "comments": []
+        },
+        {
+          "id": "fc3de513-ed66-4ec7-8999-15cbd40d9078",
+          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
+          "title": "Refactoring code",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
           "comments": []
         }
       ]
