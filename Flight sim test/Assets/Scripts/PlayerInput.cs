@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public MainUIManager uiman;
+    public MissileLockController mlcon;
     public float ControlCircleSize = 0.8f;
     public float MouseEaseSpeed = 8f;
 
@@ -19,7 +20,7 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //
+        UpdateMissileLockController();
     }
 
     private float[] GetInputMouse() {
@@ -60,5 +61,11 @@ public class PlayerInput : MonoBehaviour
         print("setting control circle: " + value);
         ControlCircleSize = value;
         uiman.UpdateControlCircleSprite(ControlCircleSize);
+    }
+
+    private void UpdateMissileLockController() {
+        if(Input.GetButtonDown("Fire2")) {
+            // mlcon.FireMissile();
+        }
     }
 }

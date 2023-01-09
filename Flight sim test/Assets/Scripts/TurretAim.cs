@@ -24,6 +24,9 @@ public class TurretAim : MonoBehaviour
     void Update()
     {
         Target = GetClosestEnemy(GameObject.FindGameObjectsWithTag("Player"));
+        if(Target == null) {
+            return;
+        }
         float dist = Vector3.Distance(transform.position,Target.transform.position);
         if(fireCooldown > 0) {
             fireCooldown -= Time.deltaTime;

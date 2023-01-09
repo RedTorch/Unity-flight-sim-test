@@ -35,8 +35,6 @@ public class PlaneController : MonoBehaviour
 
     private bool IsControlsEnabled = false;
 
-    private float ControlCircleSize = 0.8f; // This is hacky, remove later when player input is fully isolated
-
     void Start()
     {
         DefaultFov = CamManager.GetMainCam().fieldOfView;

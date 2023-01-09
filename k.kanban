@@ -10,23 +10,34 @@
       "title": "Todo",
       "cards": [
         {
-          "id": "6c0fc155-1945-488c-a487-ab385c94645e",
+          "id": "b536d9bd-1e90-47e9-894c-d221811e9615",
           "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
-          "title": "Missile lock",
-          "description": "",
+          "title": "UI Elements",
+          "description": "REQUIRES:\nFeature: multiple selectable weapon types\nFeature: points given to entity for target score",
           "labels": [
             {
-              "id": "f40ef48b-4540-4dc8-aa60-7011b19da7f2",
-              "title": "Code",
-              "color": "#0079bf"
-            },
-            {
-              "id": "ec8dc4ef-3f9f-417f-9c07-cc7d23824780",
-              "title": "High 🔥",
-              "color": "#ff9f1a"
+              "id": "3254d61b-b7b7-49fa-af74-f34670f7ee70",
+              "title": "Visual / UI",
+              "color": "#f2d600"
             }
           ],
-          "checkboxes": [],
+          "checkboxes": [
+            {
+              "id": "87e1d911-527b-4183-ba6a-d4138958d82b",
+              "title": "Healthbar",
+              "checked": true
+            },
+            {
+              "id": "924e058e-1ef6-4754-a528-ba587a6c3429",
+              "title": "Weapon select",
+              "checked": false
+            },
+            {
+              "id": "704e15bc-c716-490d-80bf-206c7efae9f0",
+              "title": "Show points given for target destroyed",
+              "checked": false
+            }
+          ],
           "comments": []
         },
         {
@@ -94,7 +105,7 @@
           "id": "465a94c5-9341-4ea2-b40a-e35209982303",
           "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
           "title": "Missile types",
-          "description": "",
+          "description": "- single-target long-range sniper type\n- multitargeting medium-range",
           "labels": [
             {
               "id": "6e46adb5-48b3-4f2c-9edb-f337f2c7ccc5",
@@ -112,43 +123,58 @@
       "title": "Doing",
       "cards": [
         {
-          "id": "b536d9bd-1e90-47e9-894c-d221811e9615",
+          "id": "fc3de513-ed66-4ec7-8999-15cbd40d9078",
           "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
-          "title": "UI Elements",
-          "description": "REQUIRES:\nFeature: multiple selectable weapon types\nFeature: points given to entity for target score",
+          "title": "Refactoring code",
+          "description": "Making it easier for AI to control (in the context); switch between player input and AI control easily",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "6c0fc155-1945-488c-a487-ab385c94645e",
+          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
+          "title": "Missile lock",
+          "description": "Targeting sprites look like shet ( a bit unclear) but we can fix that later.",
           "labels": [
             {
-              "id": "3254d61b-b7b7-49fa-af74-f34670f7ee70",
-              "title": "Visual / UI",
-              "color": "#f2d600"
+              "id": "f40ef48b-4540-4dc8-aa60-7011b19da7f2",
+              "title": "Code",
+              "color": "#0079bf"
+            },
+            {
+              "id": "ec8dc4ef-3f9f-417f-9c07-cc7d23824780",
+              "title": "High 🔥",
+              "color": "#ff9f1a"
             }
           ],
           "checkboxes": [
             {
-              "id": "87e1d911-527b-4183-ba6a-d4138958d82b",
-              "title": "Healthbar",
+              "id": "ab42a230-72f3-459c-9f5a-e5765f25ee45",
+              "title": "Obtain valid targets",
               "checked": true
             },
             {
-              "id": "924e058e-1ef6-4754-a528-ba587a6c3429",
-              "title": "Weapon select",
+              "id": "917461fe-5cf5-4955-90ad-73925bf511b3",
+              "title": "Draw targeting sprites",
+              "checked": true
+            },
+            {
+              "id": "369b6c31-5a0d-4da3-ba64-001cbdc96b65",
+              "title": "Draw *better* targeting sprites",
+              "checked": true
+            },
+            {
+              "id": "a760494d-eb72-4316-99fc-295ed6d0898e",
+              "title": "Create a tracking missile with fixed rotation speed",
               "checked": false
             },
             {
-              "id": "704e15bc-c716-490d-80bf-206c7efae9f0",
-              "title": "Show points given for target destroyed",
+              "id": "34d419df-ac63-41cb-9eb6-f1a3057e8c03",
+              "title": "Ability to launch a prefab locked to the target",
               "checked": false
             }
           ],
-          "comments": []
-        },
-        {
-          "id": "fc3de513-ed66-4ec7-8999-15cbd40d9078",
-          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
-          "title": "Refactoring code",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
           "comments": []
         }
       ]
