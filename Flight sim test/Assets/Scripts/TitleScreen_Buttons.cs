@@ -11,6 +11,7 @@ public class TitleScreen_Buttons : MonoBehaviour
 
     public void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
+        Cursor.visible = false;
     }
 
     // Start is called before the first frame update

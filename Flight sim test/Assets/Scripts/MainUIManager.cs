@@ -140,6 +140,7 @@ public class MainUIManager : MonoBehaviour
             if(i<locking.Count) {
                 GameObject curr = locking[i];
                 targetPrefabs[i].GetComponent<TargetingBoxScript>().SetFocusedObject(curr,1);
+                targetPrefabs[i].GetComponent<TargetingBoxScript>().SetFill(mlcon.GetLockPercent(curr));
                 targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
                 targetPrefabs[i].SetActive(true);
             }

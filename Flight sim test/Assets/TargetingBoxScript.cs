@@ -15,6 +15,11 @@ public class TargetingBoxScript : MonoBehaviour
     [SerializeField] private Image sprite_box;
     [SerializeField] private Image sprite_diamond;
 
+    [SerializeField] private Color color_visible;
+    [SerializeField] private Color color_locking;
+    [SerializeField] private Color color_locking_diamond;
+    [SerializeField] private Color color_locked;
+
     private GameObject player;
     private GameObject focusedObject;
 
@@ -62,23 +67,26 @@ public class TargetingBoxScript : MonoBehaviour
     public void SetState(int state) {
         if(state == 0) {
             // normal sprite (transparent?)
-            sprite_box.color = new Color(1f, 1f, 1f, 0.5f);
+            sprite_box.color = color_visible;
             sprite_box.enabled = true;
+            sprite_box.fillAmount = 1f;
             sprite_diamond.enabled = false;
         }
         else if(state == 1) {
             // filling sprite
-            sprite_box.color = new Color(1f, 1f, 1f, 1f);
-            sprite_diamond.color = new Color(1f, 1f, 1f, 1f);
+            sprite_box.color = color_locking;
+            sprite_diamond.color = color_locking_diamond;
             sprite_box.enabled = true;
+            sprite_box.fillAmount = fillPercent;
             sprite_diamond.enabled = true;
-            sprite_diamond.fillAmount = fillPercent;
+            sprite_diamond.fillAmount = 1f;
         }
         else if(state == 2) {
             // locked sprite
-            sprite_box.color = new Color(1f, 0f, 0f, 1f);
-            sprite_diamond.color = new Color(1f, 0f, 0f, 1f);
+            sprite_box.color = color_locked;
+            sprite_diamond.color = color_locked;
             sprite_box.enabled = true;
+            sprite_box.fillAmount = 1f;
             sprite_diamond.enabled = true;
             sprite_diamond.fillAmount = 1f;
         }

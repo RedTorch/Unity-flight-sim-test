@@ -5,7 +5,7 @@ using UnityEngine;
 public class MissileLockController : MonoBehaviour
 {
     private string TargetedTag = "Enemy";
-    private float LockTime = 2f;
+    private float LockTime = 1f;
     private float LockRange = 2000f;
     private float LockAngle = 20f;
     private bool isFiring = false;
@@ -66,6 +66,7 @@ public class MissileLockController : MonoBehaviour
         // now LockTable has the time-in-lock of all targets
         // lockingTargets contains all locking targets
         // lockedTargets contains all locked targets
+        
         if(isFiring) {
             isFiring = false;
             // Instantiate()
@@ -82,6 +83,10 @@ public class MissileLockController : MonoBehaviour
 
     public float GetLockTime(GameObject key) {
         return LockTable[key];
+    }
+
+    public float GetLockPercent(GameObject key) {
+        return Mathf.Clamp(LockTable[key]/LockTime,0f,1f);
     }
 
     public bool isInLockingCone(GameObject target) {

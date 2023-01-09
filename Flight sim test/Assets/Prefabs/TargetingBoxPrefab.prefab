@@ -66,13 +66,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c3d9d7a6a6fec4131a58f5bed8e41185, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2436aeda7087462bbf84d96fdfaf40d, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -218,8 +218,10 @@ MonoBehaviour:
   textRoot: {fileID: 7625398427891338630}
   sprite_box: {fileID: 5388483901628285214}
   sprite_diamond: {fileID: 2091199444062680528}
-  player: {fileID: 0}
-  focusedObject: {fileID: 0}
+  color_visible: {r: 1, g: 1, b: 1, a: 0.49019608}
+  color_locking: {r: 1, g: 1, b: 1, a: 1}
+  color_locking_diamond: {r: 1, g: 1, b: 1, a: 1}
+  color_locked: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7625398427891338630
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,14 +462,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e999f6220e0994d329249a86f648482a, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: dcc2955ad64de4d53b5e3b85fe587591, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &8584482660758546746
