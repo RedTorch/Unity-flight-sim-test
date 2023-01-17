@@ -33,7 +33,7 @@ public class TargetingBoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(focusedObject != null) {
+        if(focusedObject != null && player != null) {
             float dist = Mathf.Floor(Vector3.Distance(player.transform.position,focusedObject.transform.position));
             distance.text = dist + "m";
             SetScale(500f/(dist));
@@ -49,6 +49,9 @@ public class TargetingBoxScript : MonoBehaviour
     }
 
     public void SetFocusedObject(GameObject obj, int state) {
+        if(obj == null || player == null) {
+            return;
+        }
         focusedObject = obj;
         nametag.text = obj.name;
         SetState(state);

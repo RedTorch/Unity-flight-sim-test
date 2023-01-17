@@ -27,9 +27,17 @@ public class MainUIManager : MonoBehaviour
     public GameObject lockingTargetPrefab;
     public Transform lockingTargetBoxRoot;
     private GameObject[] targetPrefabs = new GameObject[200];
-    // public GameObject
+
+    public GameObject gameOverMenu;
+    public TMP_Text gameOverText;
+    
+    public TMP_Text scoreText;
 
     public GameObject player;
+
+    private int kills = 0;
+    private int wave = 0;
+    private int score = 0;
 
 
     // Start is called before the first frame update
@@ -45,6 +53,7 @@ public class MainUIManager : MonoBehaviour
             inst.GetComponent<TargetingBoxScript>().SetPlayer(player);
             targetPrefabs[i] = inst;
         }
+        gameOverMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,6 +63,7 @@ public class MainUIManager : MonoBehaviour
         UpdateTargetBoxes();
         //
         SetMousePos();
+        UpdateScore();
     }
 
     public void UpdateControlCircleSprite(float size) {
@@ -134,6 +144,9 @@ public class MainUIManager : MonoBehaviour
     }
 
     public void UpdateTargetBoxes() {
+        if(!player) {
+            return;
+        }
         List<GameObject> locking = mlcon.GetLockingTargets();
         List<GameObject> locked = mlcon.GetLockedTargets();
         for(int i = 0; i < targetPrefabs.Length; i++) {
@@ -150,8 +163,8 @@ public class MainUIManager : MonoBehaviour
                 targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
                 targetPrefabs[i].SetActive(true);
             }
-            else {
-                targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0f,0f);
+            else if(targetPrefabs[i].activeInHierarchy){
+                // targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0f,0f);
                 targetPrefabs[i].SetActive(false);
             }
             
@@ -178,8 +191,24 @@ public class MainUIManager : MonoBehaviour
         }
     }
 
+    public void GameOverMenu() {
+        gameOverText.text = wave + "\n" + (kills).ToString() + "\n" + score;
+        reticle.gameObject.SetActive(false);
+        gameOverMenu.SetActive(true);
+        lockingTargetBoxRoot.gameObject.SetActive(false);
+    }
+
+    private void UpdateScore() {
+        score = (50*kills) + (100*wave);
+        scoreText.text = (score).ToString();
+    }
+
     void OnApplicationFocus(bool hasFocus)
     {
         Cursor.visible = false;
+    }
+
+    public void addKill() {
+        kills++;
     }
 }

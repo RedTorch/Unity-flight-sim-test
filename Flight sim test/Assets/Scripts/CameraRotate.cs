@@ -15,7 +15,7 @@ public class CameraRotate : MonoBehaviour
             return;
         }
         float tiltAroundZ = deltMpx * tiltAngle;
-        float tiltAroundX = deltMpy * -1f * tiltAngle;
+        float tiltAroundX = deltMpy * -1f * tiltAngle * 0.8f;
         // float tiltAroundY = Input.GetAxis("Horizontal") * tiltAngle;
         Quaternion target = Quaternion.Euler (tiltAroundX, 0f, tiltAroundZ);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, target, Time.deltaTime * smooth);

@@ -11,6 +11,8 @@ public class HealthManager : MonoBehaviour
     private float Health;
 
     private bool verbose = false;
+
+    public GameObject camObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,16 @@ public class HealthManager : MonoBehaviour
             uiman.UpdateHealthBar(Health/MaxHealth);
         }
         if(Health <= 0) {
+            if(gameObject.tag == "Enemy") {
+                GameObject.Find("MainUI").GetComponent<MainUIManager>().addKill();
+            }
             Instantiate(ExplosionPrefab,transform.position,Quaternion.identity);
+            if(camObject) {
+                camObject.transform.parent = null;
+            }
+            if(uiman) {
+                uiman.GameOverMenu();
+            }
             Destroy(gameObject);
         }
     }
