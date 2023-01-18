@@ -5463,7 +5463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 1949845174}
   Ground: {fileID: 3028684910839657719, guid: cfcc1ebe440084c079405683a8c664a0, type: 3}
-  GroundEnabled: 0
+  GroundEnabled: 1
   GroundScaleXZ: {x: 0, y: 0}
   Turret: {fileID: 4064678645616613802, guid: 3c30cda10c5864a8a846a70feb4368ad, type: 3}
   TurretEnabled: 1

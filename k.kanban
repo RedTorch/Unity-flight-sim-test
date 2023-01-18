@@ -105,7 +105,7 @@
           "id": "465a94c5-9341-4ea2-b40a-e35209982303",
           "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
           "title": "Missile types",
-          "description": "- single-target long-range sniper type\n- multitargeting medium-range",
+          "description": "- single-target long-range sniper type, long acquisition time, narrow cone\n- multitargeting type",
           "labels": [
             {
               "id": "6e46adb5-48b3-4f2c-9edb-f337f2c7ccc5",

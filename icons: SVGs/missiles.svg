@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (b8e25be8, 2022-02-05)"
+   sodipodi:docname="missiles.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.55678311"
+     inkscape:cx="396.92296"
+     inkscape:cy="561.25984"
+     inkscape:window-width="1386"
+     inkscape:window-height="847"
+     inkscape:window-x="54"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.999997;stroke-opacity:0"
+       d="m 60.894675,126.79303 v -0.70684 h -4.759243 c -4.598891,0 -4.772395,-0.0209 -5.150202,-0.62328 -0.278081,-0.44337 -0.297803,-0.65426 -0.06821,-0.73043 0.231392,-0.0768 0.322661,-2.52044 0.322661,-8.63934 v -8.53227 l 4.818533,-4.79132 4.818546,-4.791275 0.01278,-38.251919 0.01278,-38.251904 -2.062732,-0.0014 c -1.134504,-8.9e-4 -3.304184,-0.08334 -4.821508,-0.18336 L 51.259306,21.107774 53.331011,19.6654 c 1.139425,-0.793296 3.353378,-2.568851 4.9199,-3.945677 l 2.848197,-2.50331 0.159215,-2.727276 c 0.249421,-4.2709366 1.051266,-8.8014079 1.666093,-9.413549 1.401982,-1.39587839 2.303077,-0.28052654 2.912357,3.6048628 0.265762,1.6947752 0.559249,4.3158116 0.652212,5.8245192 l 0.169002,2.74311 2.905812,2.56563 c 1.598181,1.411099 3.847477,3.230231 4.998447,4.042516 l 2.09267,1.476836 -5.040511,0.07726 -5.040535,0.07727 V 59.72402 97.960438 l 4.827542,4.800262 4.827554,4.80024 v 8.55584 c 0,5.5154 0.101005,8.55584 0.283977,8.55584 0.412972,0 0.347599,0.5425 -0.121706,1.00978 -0.318935,0.31754 -1.41174,0.40387 -5.111507,0.40387 h -4.70584 v 0.70684 0.70689 h -2.839733 -2.83971 z"
+       id="path1200"
+       inkscape:export-filename="/Users/kmedina/Desktop/missile-fill.png"
+       inkscape:export-xdpi="50.800003"
+       inkscape:export-ydpi="50.800003" />
+  </g>
+</svg>
