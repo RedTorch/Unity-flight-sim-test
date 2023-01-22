@@ -7,7 +7,7 @@ public class AdversaryAI : MonoBehaviour
     public GunController gc;
     private Transform target;
     private Rigidbody myRb;
-    private float turnSpeed = 0.001f;
+    private float turnSpeed = 20f;
     private float speed = 40f;
     private float currSpeed;
     Quaternion rotGoal;
@@ -33,7 +33,7 @@ public class AdversaryAI : MonoBehaviour
     void TrackTarget() {
         direction = (target.position - transform.position).normalized;
         rotGoal = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotGoal, turnSpeed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotGoal, turnSpeed * Time.deltaTime);
     }
 
     void AttemptFire() {

@@ -20,7 +20,9 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateMissileLockController();
+        if(Input.GetButtonDown("Fire2")) {
+            mlcon.FireMissile();
+        }
     }
 
     private float[] GetInputMouse() {
@@ -61,11 +63,5 @@ public class PlayerInput : MonoBehaviour
         print("setting control circle: " + value);
         ControlCircleSize = value;
         uiman.UpdateControlCircleSprite(ControlCircleSize);
-    }
-
-    private void UpdateMissileLockController() {
-        if(Input.GetButtonDown("Fire2")) {
-            // mlcon.FireMissile();
-        }
     }
 }

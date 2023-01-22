@@ -39,6 +39,8 @@ public class MainUIManager : MonoBehaviour
     private int wave = 0;
     private int score = 0;
 
+    public Image[] missileIndicators;
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,7 @@ public class MainUIManager : MonoBehaviour
         //
         SetMousePos();
         UpdateScore();
+        UpdateMissileIndicators();
     }
 
     public void UpdateControlCircleSprite(float size) {
@@ -157,37 +160,24 @@ public class MainUIManager : MonoBehaviour
                 targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
                 targetPrefabs[i].SetActive(true);
             }
-            else if(i<(locking.Count + locked.Count)){
-                GameObject curr = locked[i-locking.Count];
-                targetPrefabs[i].GetComponent<TargetingBoxScript>().SetFocusedObject(curr,2);
-                targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
-                targetPrefabs[i].SetActive(true);
+            else if(i<(locking.Count + locked.Count)) {
+                if(i<locking.Count + mlcon.getMaxTargets()) {
+                    GameObject curr = locked[i-locking.Count];
+                    targetPrefabs[i].GetComponent<TargetingBoxScript>().SetFocusedObject(curr,2);
+                    targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
+                    targetPrefabs[i].SetActive(true);
+                }
+                else {
+                    GameObject curr = locked[i-locking.Count];
+                    targetPrefabs[i].GetComponent<TargetingBoxScript>().SetFocusedObject(curr,1);
+                    targetPrefabs[i].GetComponent<TargetingBoxScript>().SetFill(mlcon.GetLockPercent(curr));
+                    targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
+                    targetPrefabs[i].SetActive(true);
+                }
             }
-            else if(targetPrefabs[i].activeInHierarchy){
-                // targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0f,0f);
+            else if(targetPrefabs[i].activeInHierarchy) {
                 targetPrefabs[i].SetActive(false);
             }
-            
-            // if(i<locking.Count) {
-            //     GameObject curr = locking[i];
-            //     targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
-            //     float distance = Vector3.Distance(player.transform.position,curr.transform.position);
-            //     targetPrefabs[i].GetComponent<TargetingBoxScript>().SetText(Mathf.Floor(distance) + "m", "lt: " + mlcon.GetLockTime(curr));
-            //     targetPrefabs[i].GetComponent<TargetingBoxScript>().SetScale(500f/(distance));
-            //     targetPrefabs[i].SetActive(true);
-            // }
-            // else if(i<locking.Count + locked.Count) {
-            //     GameObject curr = locked[i-locking.Count];
-            //     targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = WorldToScreenPos(curr.transform.position);
-            //     float distance = Vector3.Distance(player.transform.position,curr.transform.position);
-            //     targetPrefabs[i].GetComponent<TargetingBoxScript>().SetText(Mathf.Floor(distance) + "m", "lt: " + mlcon.GetLockTime(curr));
-            //     targetPrefabs[i].GetComponent<TargetingBoxScript>().SetScale(500f/(distance));
-            //     targetPrefabs[i].SetActive(true);
-            // }
-            // else {
-            //     targetPrefabs[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(0f,0f);
-            //     targetPrefabs[i].SetActive(false);
-            // }
         }
     }
 
@@ -210,5 +200,14 @@ public class MainUIManager : MonoBehaviour
 
     public void addKill() {
         kills++;
+    }
+
+    public void UpdateMissileIndicators() {
+        // get status
+        float[] vals = mlcon.getMissileStatus();
+        // display status
+        for(int i=0; i<missileIndicators.Length; i++) {
+            missileIndicators[i].fillAmount = Mathf.Clamp(vals[i],0f,1f);
+        }
     }
 }

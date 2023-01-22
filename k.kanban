@@ -165,6 +165,16 @@
               "checked": true
             },
             {
+              "id": "7f8110e2-e648-4769-9a7b-ea4f7e09a3cf",
+              "title": "Limited missile lock (maxTargets)",
+              "checked": true
+            },
+            {
+              "id": "41a4b999-1d2d-480f-a854-fc452573178b",
+              "title": "Missile launching and reloading system",
+              "checked": false
+            },
+            {
               "id": "a760494d-eb72-4316-99fc-295ed6d0898e",
               "title": "Create a tracking missile with fixed rotation speed",
               "checked": false
@@ -176,26 +186,6 @@
             }
           ],
           "comments": []
-        },
-        {
-          "id": "763863ab-9d5a-4e4c-b4b7-abe3cfacdc3f",
-          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
-          "title": "Improved missile sprites",
-          "description": "",
-          "labels": [],
-          "checkboxes": [
-            {
-              "id": "0586cbd3-7622-457c-85f6-5b17a2680d2d",
-              "title": "Thicker borders (improve visibility)",
-              "checked": false
-            },
-            {
-              "id": "d7a8307f-e94a-4efb-8bee-aed17698a4b4",
-              "title": "Lock animation (diamond radial fill)",
-              "checked": false
-            }
-          ],
-          "comments": []
         }
       ]
     },
@@ -203,6 +193,26 @@
       "id": "f4405815-73f0-476b-8e3a-478d16310028",
       "title": "Done",
       "cards": [
+        {
+          "id": "763863ab-9d5a-4e4c-b4b7-abe3cfacdc3f",
+          "listId": "f4405815-73f0-476b-8e3a-478d16310028",
+          "title": "Improved missile sprites",
+          "description": "",
+          "labels": [],
+          "checkboxes": [
+            {
+              "id": "0586cbd3-7622-457c-85f6-5b17a2680d2d",
+              "title": "Thicker borders (improve visibility)",
+              "checked": true
+            },
+            {
+              "id": "d7a8307f-e94a-4efb-8bee-aed17698a4b4",
+              "title": "Lock animation (diamond radial fill)",
+              "checked": true
+            }
+          ],
+          "comments": []
+        },
         {
           "id": "51377548-2815-4003-9f15-95b69aa11aff",
           "listId": "f4405815-73f0-476b-8e3a-478d16310028",
