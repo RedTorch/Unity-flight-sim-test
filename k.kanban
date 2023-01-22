@@ -61,8 +61,29 @@
           "comments": []
         },
         {
-          "id": "04340739-a5d8-4a4c-8901-0a60a66d90cf",
+          "id": "465a94c5-9341-4ea2-b40a-e35209982303",
           "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
+          "title": "Missile types",
+          "description": "- single-target long-range sniper type, long acquisition time, narrow cone\n- multitargeting type",
+          "labels": [
+            {
+              "id": "6e46adb5-48b3-4f2c-9edb-f337f2c7ccc5",
+              "title": "Design",
+              "color": "#00c2e0"
+            }
+          ],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
+      "title": "Doing",
+      "cards": [
+        {
+          "id": "04340739-a5d8-4a4c-8901-0a60a66d90cf",
+          "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
           "title": "Basic Music and SFX",
           "description": "",
           "labels": [
@@ -102,27 +123,6 @@
           "comments": []
         },
         {
-          "id": "465a94c5-9341-4ea2-b40a-e35209982303",
-          "listId": "8405ba0b-5f1d-4f9b-9edc-9284679a54c2",
-          "title": "Missile types",
-          "description": "- single-target long-range sniper type, long acquisition time, narrow cone\n- multitargeting type",
-          "labels": [
-            {
-              "id": "6e46adb5-48b3-4f2c-9edb-f337f2c7ccc5",
-              "title": "Design",
-              "color": "#00c2e0"
-            }
-          ],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
-      "title": "Doing",
-      "cards": [
-        {
           "id": "fc3de513-ed66-4ec7-8999-15cbd40d9078",
           "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
           "title": "Refactoring code",
@@ -132,8 +132,29 @@
           "comments": []
         },
         {
-          "id": "6c0fc155-1945-488c-a487-ab385c94645e",
+          "id": "a89319bb-6aad-4aea-bf38-bc9fbb3b10c8",
           "listId": "d1c83f6e-25d4-4c1c-ae70-ec6d1c14c85a",
+          "title": "Screen shake on damage/ explosion",
+          "description": "",
+          "labels": [
+            {
+              "id": "3254d61b-b7b7-49fa-af74-f34670f7ee70",
+              "title": "Visual / UI",
+              "color": "#f2d600"
+            }
+          ],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "f4405815-73f0-476b-8e3a-478d16310028",
+      "title": "Done",
+      "cards": [
+        {
+          "id": "6c0fc155-1945-488c-a487-ab385c94645e",
+          "listId": "f4405815-73f0-476b-8e3a-478d16310028",
           "title": "Missile lock",
           "description": "Targeting sprites look like shet ( a bit unclear) but we can fix that later.",
           "labels": [
@@ -172,27 +193,21 @@
             {
               "id": "41a4b999-1d2d-480f-a854-fc452573178b",
               "title": "Missile launching and reloading system",
-              "checked": false
+              "checked": true
             },
             {
               "id": "a760494d-eb72-4316-99fc-295ed6d0898e",
               "title": "Create a tracking missile with fixed rotation speed",
-              "checked": false
+              "checked": true
             },
             {
               "id": "34d419df-ac63-41cb-9eb6-f1a3057e8c03",
               "title": "Ability to launch a prefab locked to the target",
-              "checked": false
+              "checked": true
             }
           ],
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "f4405815-73f0-476b-8e3a-478d16310028",
-      "title": "Done",
-      "cards": [
+        },
         {
           "id": "763863ab-9d5a-4e4c-b4b7-abe3cfacdc3f",
           "listId": "f4405815-73f0-476b-8e3a-478d16310028",
