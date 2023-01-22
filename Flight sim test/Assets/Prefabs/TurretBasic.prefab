@@ -245,7 +245,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7e617b7a00b942c08a0e097994585ea, type: 2}
+  - {fileID: 2100000, guid: 54435f3341e164ab581df7fd8aece012, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   uiman: {fileID: 0}
   MaxHealth: 5
   ExplosionPrefab: {fileID: 4675929755370880301, guid: 707a95a8f00e54dec8d88abaeef4189c, type: 3}
+  camObject: {fileID: 0}
 --- !u!114 &4064678645616613807
 MonoBehaviour:
   m_ObjectHideFlags: 0
