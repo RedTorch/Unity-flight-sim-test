@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlatPlaneSkin
+  m_Name: FlatGround
   m_Shader: {fileID: 4800000, guid: 24f9f312f97bd48dba1a728d58c89842, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -75,6 +75,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.3671235, g: 0.40198174, b: 0.4716981, a: 1}
+    - _Color: {r: 0.37866518, g: 0.7924528, b: 0.16820934, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
