@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public Camera Cam3p;
-    public Camera Cam1p;
 
     public bool IsFPCam = false; // default is third person camera
 
@@ -24,12 +23,10 @@ public class CameraManager : MonoBehaviour
     public void SetIsFPCam(bool value) {
         if(value == true) {
             IsFPCam = true;
-            Cam1p.enabled = true;
             Cam3p.enabled = false;
         }
         else {
             IsFPCam = false;
-            Cam1p.enabled = false;
             Cam3p.enabled = true;
         }
     }
@@ -39,9 +36,6 @@ public class CameraManager : MonoBehaviour
     }
 
     public Camera GetMainCam() {
-        if(IsFPCam) {
-            return Cam1p;
-        }
         return Cam3p;
     }
 }

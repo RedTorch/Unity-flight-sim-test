@@ -34,7 +34,7 @@ public class AdversaryAI : MonoBehaviour
             canAttack = true;
         }
         if(canAttack) {
-            TrackTarget();
+            update_ManeuverTowards(target.position);
             AttemptFire();
         } else {
             // do nothing and keep traveling in a straight line
@@ -42,10 +42,22 @@ public class AdversaryAI : MonoBehaviour
         myRb.velocity = transform.forward * currSpeed;
     }
 
-    void TrackTarget() {
-        direction = (target.position - transform.position).normalized;
-        rotGoal = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotGoal, turnSpeed * Time.deltaTime);
+    private void update_ManeuverTowards(Vector3 targetPos)
+    {
+        Vector3 relativePosOfTarget = transform.InverseTransformPoint(targetPos);
+        float turnIncr = turnSpeed*Time.deltaTime;
+        if(relativePosOfTarget.x >= (turnIncr))
+        {
+            transform.Rotate(0f, 0f, -turnIncr);
+        }
+        else if(relativePosOfTarget.x <= -(turnIncr))
+        {
+            transform.Rotate(0f, 0f, turnIncr);
+        }
+        else if(relativePosOfTarget.y > turnIncr || relativePosOfTarget.z < 0f)
+        {
+            transform.Rotate(-turnIncr, 0f, 0f);
+        }
     }
 
     void AttemptFire() {
